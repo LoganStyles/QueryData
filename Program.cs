@@ -1,17 +1,13 @@
 ﻿
-// The Three Parts of a LINQ Query:
-// 1. Data source.
-int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+char[] letters = new char[6] { 'B', 'D', 'A', 'C', 'B', 'A' };
 
-// 2. Query creation.
-// numberQuery is an IEnumerable<int>
-var numberQuery = from num in numbers 
-                    where (num % 2) != 0 
-                    select num;
+// letterQuery is an IEnumerable<char>
+var letterQuery = from letter in letters 
+                    where letter == 'A' 
+                    select letter;
 
-// 3. Query execution.
-foreach (int num in numberQuery)
+foreach (char item in letterQuery)
 {
-    Console.Write("{0} ", num);
+        Console.Write("{0} ",item);
 }
-    Console.WriteLine();
+        Console.WriteLine();
