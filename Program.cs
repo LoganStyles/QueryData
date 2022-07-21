@@ -8,6 +8,6 @@ var letterQuery = from letter in letters
 
 foreach (char item in letterQuery)
 {
-        Console.Write("{0} ",item);
+    Console.Write("{0} ", item);
 }
-        Console.WriteLine();
+    Console.WriteLine();
