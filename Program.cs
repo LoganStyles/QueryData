@@ -1,6 +1,6 @@
-﻿char[] letters = new char[6] { 'B', 'D', 'A', 'C', 'B', 'A' };
+﻿
+char[] letters = new char[6] { 'B', 'D', 'A', 'C', 'B', 'A' };
 
-// letterQuery is an IEnumerable<char>
 var letterQuery = letters
                     .Where(l => l == 'A');
 
