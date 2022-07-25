@@ -10,16 +10,12 @@ string[] fruits = new string[6]
 };
 
 //query for ascending sort
-var ascendingFruitsQuery =
-    from fruit in fruits
-    orderby fruit // ascending by default
-    select fruit;
+var ascendingFruitsQuery = fruits
+                            .OrderBy(fruit => fruit); // ascending by default
 
 //query for descending sort
-var descendingFruitsQuery =
-    from fruit in fruits
-    orderby fruit descending// descending order
-    select fruit;
+var descendingFruitsQuery = fruits
+                            .OrderByDescending(fruit=>fruit); // descending order
 
 //execute the query
 Console.WriteLine("Ascending Order:");
