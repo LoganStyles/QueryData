@@ -1,17 +1,10 @@
 ﻿//data source
-string[] fruits = new string[6]
-{
-    "oranges",
-    "apples",
-    "strawberries",
-    "grapes",
-    "bananas",
-    "mangoes"
-};
+List<int> grades = new List<int>() {20,50,60,81,95,32,45};
 
 //query for ascending sort
-var ascendingFruitsQuery = fruits
-                            .OrderBy(fruit => fruit); // ascending by default
+var lowScoresQuery = from grade in grades
+where grade > 50
+select grade;
 
 //query for descending sort
 var descendingFruitsQuery = fruits
