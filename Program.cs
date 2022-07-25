@@ -1,11 +1,50 @@
-﻿
-char[] letters = new char[6] { 'B', 'D', 'A', 'C', 'B', 'A' };
-
-var letterQuery = letters
-                    .Where(l => l == 'A');
-
-foreach (char item in letterQuery)
+﻿//data source
+string[] fruits = new string[6]
 {
-    Console.Write("{0} ", item);
+    "oranges",
+    "apples",
+    "strawberries",
+    "grapes",
+    "bananas",
+    "mangoes"
+};
+
+//query for ascending sort
+var ascendingFruitsQuery =
+    from fruit in fruits
+    orderby fruit // ascending by default
+    select fruit;
+
+//query for descending sort
+var descendingFruitsQuery =
+    from fruit in fruits
+    orderby fruit descending// descending order
+    select fruit;
+
+//execute the query
+Console.WriteLine("Ascending Order:");
+foreach (string item in ascendingFruitsQuery)
+{
+    Console.WriteLine(item);
 }
-Console.WriteLine();
+
+//execute the query
+Console.WriteLine(Environment.NewLine + "Descending Order:");
+foreach (string item in descendingFruitsQuery)
+{
+    Console.WriteLine(item);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
