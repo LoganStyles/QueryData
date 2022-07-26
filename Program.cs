@@ -19,14 +19,11 @@
                                 };
 
         //inner join query between albums and Publishers
-        var albumPublisherQuery = from pub in publishers
-                                    join alb in albums
-                                    on pub.Id equals alb.PublishId
-                                    select new {
-                                            AlbumTitle = alb.Title, 
-                                            PublisherName=pub.FirstName+" "+pub.LastName
-                                        };
-
+        var albumPublisherQuery = publishers.Join(albums,p=>p.Id,a=>a.PublishId, (pub,alb)=>new{
+                                            PublisherName = pub.FirstName+" "+pub.LastName, 
+                                            AlbumTitle  =alb.Title
+        });
+        
 
         Console.WriteLine("\tALBUM \t\tPUBLISHER");
         //execute the query
