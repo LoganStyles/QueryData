@@ -21,13 +21,12 @@
                                 };
 
         //cross join query between publishers and albums
-        var albumPublisherQuery = from pub in publishers
-                                    from alb in albums
-                                    select new 
-                                        {
-                                            PublisherName=pub.FirstName+" "+pub.LastName,
-                                            AlbumTitle = alb.Title,
-                                        };
+        var albumPublisherQuery = publishers
+                                            .SelectMany(pub=>albums,(pub,alb)=>new
+                                            {
+                                            PublisherName = pub.FirstName+" "+pub.LastName, 
+                                            AlbumTitle  =alb.Title
+                                            });
         
 
         Console.WriteLine("\tPUBLISHER \t\tALBUM");
