@@ -3,33 +3,39 @@
     private static void Main(string[] args)
     {
         //data source
-        List<Employee> employees =  new List<Employee> {
-                                    new Employee {FirstName="Felix", LastName="Donald", Salary=7000},
-                                    new Employee {FirstName="Sandra", LastName="Yemi", Salary=5400},
-                                    new Employee {FirstName="Femi", LastName="Fraser", Salary=4300},
-                                    new Employee {FirstName="Jones", LastName="Blaze", Salary=6100}
-                                    };
+        List<Publisher> publishers =  new List<Publisher> {
+                                        new Publisher {Id=1, FirstName="Felix", LastName="Donald"},
+                                        new Publisher {Id=2, FirstName="Sandra", LastName="Yemi"},
+                                        new Publisher {Id=3, FirstName="Femi", LastName="Fraser"},
+                                        new Publisher {Id=4, FirstName="Jones", LastName="Blaze"}
+                                        };
 
-        //query to group Employees
-        var employeeSalaryQuery = employees
-                                .GroupBy(e => e.Salary >= 5000);
+        //data source
+        List<Album> albums = new List<Album>{
+                                    new Album {Id=1, PublishId=2, Title="Gold Rush"},
+                                    new Album {Id=2, PublishId=3, Title="My love"},
+                                    new Album {Id=3, PublishId=3, Title="1000 miles"},
+                                    new Album {Id=4, PublishId=2, Title="Sunny roses"}
+                                };
+
+        //inner join query between albums and Publishers
+        var albumPublisherQuery = from pub in publishers
+                                    join alb in albums
+                                    on pub.Id equals alb.PublishId
+                                    select new {
+                                            AlbumTitle = alb.Title, 
+                                            PublisherName=pub.FirstName+" "+pub.LastName
+                                        };
 
 
+        Console.WriteLine("\tALBUM \t\tPUBLISHER");
         //execute the query
-        foreach (var group in employeeSalaryQuery)
+        foreach (var item in albumPublisherQuery)
         {
-            Console.WriteLine(group.Key == true ? "High earning employee(s)" : "Low earning employee(s)");
-
-            foreach(var item in group)
-            Console.WriteLine("\t{0} \t{1}", item.FirstName, item.Salary);
+            Console.WriteLine("\t{0} \t{1}", item.AlbumTitle, item.PublisherName);
         }
-    }
-}
 
-public class Employee{
-    public string FirstName {get; set;}
-    public string LastName {get; set;}
-    public int Salary {get; set;}
+    }
 }
 
 
