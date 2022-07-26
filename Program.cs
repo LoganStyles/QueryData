@@ -1,19 +1,37 @@
-﻿//data source
-List<int> grades = new List<int>() {20,50,60,81,95,32,45};
-
-//query for high scores
-var highScoresQuery = from grade in grades
-                        where grade > 69
-                        select grade;
-
-
-//execute the query
-foreach (var item in highScoresQuery)
+﻿class Program
 {
-    Console.WriteLine(item);
+    private static void Main(string[] args)
+    {
+        //data source
+        List<Employee> employees = new List<Employee> {
+                                    new Employee {FirstName="Felix", LastName="Donald", Salary=7000},
+                                    new Employee {FirstName="Sandra", LastName="Yemi", Salary=5400},
+                                    new Employee {FirstName="Femi", LastName="Fraser", Salary=4300},
+                                    new Employee {FirstName="Jones", LastName="Blaze", Salary=6100}
+                                    };
+
+        //query for employee lastname & salary
+        var employeesQuery = from employee in employees
+                              select new {
+                                Name=employee.LastName, 
+                                Salary=employee.Salary
+                                };
+
+
+        Console.WriteLine("\tNAME \tSALARY");
+        //execute the query
+        foreach (var item in employeesQuery)
+        {
+            Console.WriteLine("\t{0} \t{1}", item.Name, item.Salary);
+        }
+    }
 }
 
-
+public class Employee{
+    public string FirstName {get; set;}
+    public string LastName {get; set;}
+    public int Salary {get; set;}
+}
 
 
 
