@@ -3,7 +3,8 @@
     private static void Main(string[] args)
     {
         //data source
-        List<Publisher> publishers =  new List<Publisher> {
+        List<Publisher> publishers =  new List<Publisher> 
+                                        {
                                         new Publisher {Id=1, FirstName="Felix", LastName="Donald"},
                                         new Publisher {Id=2, FirstName="Sandra", LastName="Yemi"},
                                         new Publisher {Id=3, FirstName="Femi", LastName="Fraser"},
@@ -11,7 +12,8 @@
                                         };
 
         //data source
-        List<Album> albums = new List<Album>{
+        List<Album> albums = new List<Album>
+                                {
                                     new Album {Id=1, PublishId=2, Title="Gold Rush"},
                                     new Album {Id=2, PublishId=3, Title="My love"},
                                     new Album {Id=3, PublishId=3, Title="1000 miles"},
@@ -22,7 +24,8 @@
         var albumPublisherQuery = from pub in publishers
                                     join alb in albums
                                     on pub.Id equals alb.PublishId
-                                    select new {
+                                    select new 
+                                        {
                                             AlbumTitle = alb.Title, 
                                             PublisherName=pub.FirstName+" "+pub.LastName
                                         };
