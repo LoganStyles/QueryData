@@ -3,7 +3,7 @@ string[] fruits = new string[6]
 {
     "oranges",
     "apples",
-    "strawberries",
+    "berries",
     "grapes",
     "bananas",
     "mangoes"
