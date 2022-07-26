@@ -20,7 +20,7 @@
                                     new Album {Id=4, PublishId=2, Title="Sunny roses"}
                                 };
 
-        //inner join query between albums and Publishers
+        //group join query between albums and Publishers
         var albumPublisherQuery = from pub in publishers
                                     join alb in albums
                                     on pub.Id equals alb.PublishId 
