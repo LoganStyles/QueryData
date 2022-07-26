@@ -21,15 +21,12 @@
                                 };
 
         //inner join query between albums and Publishers
-        var albumPublisherQuery = from pub in publishers
-                                    join alb in albums
-                                    on pub.Id equals alb.PublishId 
-                                    into g
-                                    select new 
-                                        {
-                                            PublisherName=pub.FirstName+" "+pub.LastName,
-                                            Albums = g.Count(), 
-                                        };
+        var albumPublisherQuery = publishers
+                                            .GroupJoin(albums,p=>p.Id,a=>a.PublishId, (pub,albs)=>new
+                                                    {
+                                                    PublisherName = pub.FirstName+" "+pub.LastName, 
+                                                    Albums  =albs.Count()
+                                                    });
         
 
         Console.WriteLine("\tPUBLISHER \tALBUMS");
