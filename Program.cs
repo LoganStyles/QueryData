@@ -21,8 +21,8 @@
         {
             Console.WriteLine(group.Key == true ? "High earning employee(s)" : "Low earning employee(s)");
 
-            foreach(var salaryGroup in group)
-            Console.WriteLine("\t{0} \t{1}", salaryGroup.FirstName, salaryGroup.Salary);
+            foreach(var item in group)
+            Console.WriteLine("\t{0} \t{1}", item.FirstName, item.Salary);
         }
 
     }
