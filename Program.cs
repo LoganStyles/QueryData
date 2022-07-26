@@ -21,19 +21,22 @@
                                 };
 
         //inner join query between albums and Publishers
-        var albumPublisherQuery = publishers
-                                            .Join(albums,p=>p.Id,a=>a.PublishId, (pub,alb)=>new
-                                                    {
-                                                    PublisherName = pub.FirstName+" "+pub.LastName, 
-                                                    AlbumTitle  =alb.Title
-                                                    });
+        var albumPublisherQuery = from pub in publishers
+                                    join alb in albums
+                                    on pub.Id equals alb.PublishId 
+                                    into g
+                                    select new 
+                                        {
+                                            PublisherName=pub.FirstName+" "+pub.LastName,
+                                            Albums = g.Count(), 
+                                        };
         
 
-        Console.WriteLine("\tALBUM \t\tPUBLISHER");
+        Console.WriteLine("\tPUBLISHER \tALBUMS");
         //execute the query
         foreach (var item in albumPublisherQuery)
         {
-            Console.WriteLine("\t{0} \t{1}", item.AlbumTitle, item.PublisherName);
+            Console.WriteLine("\t{0} \t{1}", item.PublisherName, item.Albums);
         }
 
     }
