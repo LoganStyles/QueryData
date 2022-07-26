@@ -7,17 +7,15 @@ List<Student> students = new List<Student> {
 
     };
 
-//query for high scores
-var studentGroupQuery = from student in students
-group student by student.Grade >=50
-into g
-select g;
+//query to group students
+var studentGroupQuery = students
+                        .GroupBy(student=>student.Grade >=50);
+
 
 //execute the query
 foreach (var group in studentGroupQuery)
 {
-    // Console.WriteLine(group.Key);
-    Console.WriteLine(group.Key == true ? "High scores" : "Low scores");
+    Console.WriteLine(group.Key == true ? "Students who passed" : "Students who failed");
 
     foreach(var scoreGroup in group)
     Console.WriteLine("\t{0}", scoreGroup.FirstName);
