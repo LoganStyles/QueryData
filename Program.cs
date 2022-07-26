@@ -20,21 +20,21 @@
                                     new Album {Id=4, PublishId=2, Title="Sunny roses"}
                                 };
 
-        //group join query between publishers and albums
-        var albumPublisherQuery = publishers
-                                            .GroupJoin(albums,p=>p.Id, a=>a.PublishId, 
-                                            (pub,albs)=>new
-                                                    {
-                                                    PublisherName = pub.FirstName+" "+pub.LastName, 
-                                                    Albums  =albs.Count()
-                                                    });
+        //cross join query between publishers and albums
+        var albumPublisherQuery = from pub in publishers
+                                    from alb in albums
+                                    select new 
+                                        {
+                                            PublisherName=pub.FirstName+" "+pub.LastName,
+                                            AlbumTitle = alb.Title,
+                                        };
         
 
-        Console.WriteLine("\tPUBLISHER \tALBUMS");
+        Console.WriteLine("\tPUBLISHER \t\tALBUM");
         //execute the query
         foreach (var item in albumPublisherQuery)
         {
-            Console.WriteLine("\t{0} \t{1}", item.PublisherName, item.Albums);
+            Console.WriteLine("\t{0} -\t{1}", item.PublisherName, item.AlbumTitle);
         }
 
     }
