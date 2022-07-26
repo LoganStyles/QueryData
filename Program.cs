@@ -20,9 +20,10 @@
                                     new Album {Id=4, PublishId=2, Title="Sunny roses"}
                                 };
 
-        //inner join query between albums and Publishers
+        //group join query between publishers and albums
         var albumPublisherQuery = publishers
-                                            .GroupJoin(albums,p=>p.Id,a=>a.PublishId, (pub,albs)=>new
+                                            .GroupJoin(albums,p=>p.Id, a=>a.PublishId, 
+                                            (pub,albs)=>new
                                                     {
                                                     PublisherName = pub.FirstName+" "+pub.LastName, 
                                                     Albums  =albs.Count()
