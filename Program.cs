@@ -1,39 +1,39 @@
-﻿internal class Program
+﻿class Program
 {
     private static void Main(string[] args)
     {
+        
         //data source
-        List<Student> students = new List<Student> {
-                                        new Student {FirstName="Felix", LastName="Donald", Grade=70},
-                                        new Student {FirstName="Sandra", LastName="Yemi", Grade=54},
-                                        new Student {FirstName="Jones", LastName="Blaze", Grade=61},
-                                        new Student {FirstName="Charles", LastName="Fraser", Grade=43}
+        List<Employee> employees = new List<Employee> {
+                                    new Employee {FirstName="Felix", LastName="Donald", Salary=7000},
+                                    new Employee {FirstName="Sandra", LastName="Yemi", Salary=5400},
+                                    new Employee {FirstName="Femi", LastName="Fraser", Salary=4300},
+                                    new Employee {FirstName="Jones", LastName="Blaze", Salary=6100}
+                                    };
+    
 
-    };
-
-        //query for high scores
-        var studentGroupQuery = from student in students
-                                group student by student.Grade >= 50;
-                                // into g
-                                // select g;
+        //query to group Employees
+        var employeeSalaryQuery = from employee in employees
+                                group employee by employee.Salary >= 5000;
 
         //execute the query
-        foreach (var group in studentGroupQuery)
+        foreach (var group in employeeSalaryQuery)
         {
-            // Console.WriteLine(group.Key);
-            Console.WriteLine(group.Key == true ? "High scores" : "Low scores");
+            Console.WriteLine(group.Key == true ? "High earning employee(s)" : "Low earning employee(s)");
 
-            foreach (var scoreGroup in group)
-                Console.WriteLine("\t{0}", scoreGroup.FirstName);
+            foreach(var salaryGroup in group)
+            Console.WriteLine("\t{0} \t{1}", salaryGroup.FirstName, salaryGroup.Salary);
         }
+
     }
 }
 
-public class Student{
+public class Employee{
     public string FirstName {get; set;}
     public string LastName {get; set;}
-    public int Grade {get; set;}
+    public int Salary {get; set;}
 }
+
 
 
 
