@@ -12,15 +12,15 @@
 
         //query for employee lastname & salary
         var employeesQuery = employees.Select(e => new {
-                                Name= e.LastName,
+                                LastName= e.LastName,
                                 Salary = e.Salary
                             }); 
 
-        Console.WriteLine("\tNAME \tSALARY");
+        Console.WriteLine("\tLASTNAME \tSALARY");
         //execute the query
         foreach (var item in employeesQuery)
         {
-            Console.WriteLine("\t{0} \t{1}", item.Name, item.Salary);
+            Console.WriteLine("\t{0} \t\t{1}", item.LastName, item.Salary);
         }
     }
 }
