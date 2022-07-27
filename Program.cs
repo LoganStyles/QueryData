@@ -18,7 +18,7 @@
                                 };
 
 
-        Console.WriteLine("\tNAME \tSALARY");
+        Console.WriteLine("\tLASTNAME \tSALARY");
         //execute the query
         foreach (var item in employeesQuery)
         {
