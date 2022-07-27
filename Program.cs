@@ -21,14 +21,14 @@ var descendingFruitsQuery =
     orderby fruit descending// descending order
     select fruit;
 
-//execute the query
+//execute the ascending sort query
 Console.WriteLine("Ascending Order:");
 foreach (string item in ascendingFruitsQuery)
 {
     Console.WriteLine(item);
 }
 
-//execute the query
+//execute the descending sort query
 Console.WriteLine(Environment.NewLine + "Descending Order:");
 foreach (string item in descendingFruitsQuery)
 {
