@@ -21,12 +21,12 @@
                                 };
 
         //inner join query between albums and Publishers
-        var albumPublisherQuery = publishers
-                                            .Join(albums,p=>p.Id,a=>a.PublishId, (pub,alb)=>new
-                                                    {
-                                                    PublisherName = pub.FirstName+" "+pub.LastName, 
-                                                    AlbumTitle  =alb.Title
-                                                    });
+        var albumPublisherQuery = albums
+                                        .Join(publishers,a=>a.PublishId,p=>p.Id, (alb,pub)=>new
+                                                {
+                                                AlbumTitle  =alb.Title,
+                                                PublisherName = pub.FirstName+" "+pub.LastName
+                                                });
         
 
         Console.WriteLine("\tALBUM \t\tPUBLISHER");
