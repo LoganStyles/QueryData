@@ -20,10 +20,10 @@
                                     new Album {Id=4, PublishId=2, Title="Sunny roses"}
                                 };
 
-        //inner join query between albums and Publishers
-        var albumPublisherQuery = from pub in publishers
-                                    join alb in albums
-                                    on pub.Id equals alb.PublishId
+        //inner join query between albums and publishers
+        var albumPublisherQuery = from alb in albums
+                                    join pub in publishers
+                                    on alb.PublishId equals pub.Id
                                     select new 
                                         {
                                             AlbumTitle = alb.Title, 
