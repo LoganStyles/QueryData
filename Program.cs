@@ -13,7 +13,7 @@
         //query for employee lastname & salary
         var employeesQuery = from employee in employees
                               select new {
-                                Name=employee.LastName, 
+                                LastName=employee.LastName, 
                                 Salary=employee.Salary
                                 };
 
@@ -22,7 +22,7 @@
         //execute the query
         foreach (var item in employeesQuery)
         {
-            Console.WriteLine("\t{0} \t{1}", item.Name, item.Salary);
+            Console.WriteLine("\t{0} \t{1}", item.LastName, item.Salary);
         }
     }
 }
