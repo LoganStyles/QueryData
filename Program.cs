@@ -22,7 +22,7 @@
         //execute the query
         foreach (var item in employeesQuery)
         {
-            Console.WriteLine("\t{0} \t{1}", item.LastName, item.Salary);
+            Console.WriteLine("\t{0} \t\t{1}", item.LastName, item.Salary);
         }
     }
 }
