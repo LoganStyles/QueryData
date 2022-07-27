@@ -11,10 +11,11 @@
                                     };
 
         //query for employee lastname & salary
-        var employeesQuery = employees.Select(e => new {
-                                LastName= e.LastName,
-                                Salary = e.Salary
-                            }); 
+        var employeesQuery = employees
+                                    .Select(e => new {
+                                            LastName= e.LastName,
+                                            Salary = e.Salary
+                                        }); 
 
         Console.WriteLine("\tLASTNAME \tSALARY");
         //execute the query
