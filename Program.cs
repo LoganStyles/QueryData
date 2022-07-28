@@ -14,10 +14,10 @@
         //data source
         List<Album> albums = new List<Album>
                                 {
-                                    new Album {Id=1, PublishId=2, Title="Gold Rush"},
-                                    new Album {Id=2, PublishId=3, Title="My love"},
-                                    new Album {Id=3, PublishId=3, Title="1000 miles"},
-                                    new Album {Id=4, PublishId=2, Title="Sunny roses"}
+                                    new Album {Id=1, PublisherId=2, Title="Gold Rush"},
+                                    new Album {Id=2, PublisherId=3, Title="My love"},
+                                    new Album {Id=3, PublisherId=3, Title="1000 miles"},
+                                    new Album {Id=4, PublisherId=2, Title="Sunny roses"}
                                 };
 
         //cross join query between publishers and albums
