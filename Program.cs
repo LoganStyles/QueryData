@@ -1,17 +1,20 @@
-﻿
-// The Three Parts of a LINQ Query:
-// 1. Data source.
-int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+﻿using System;
+using System.Linq;
 
-// 2. Query creation.
-// numberQuery is an IEnumerable<int>
-var numberQuery = from num in numbers 
-                    where (num % 2) != 0 
-                    select num;
-
-// 3. Query execution.
-foreach (int num in numberQuery)
+class Program
 {
-    Console.Write("{0} ", num);
+    static void Main()
+    {
+        int[] numbers1 = { 17, 12, 5, 21, 30 };
+
+        var query = from element in numbers1 orderby element  select element;
+
+        int[] numbers2 = query.ToArray();
+
+        foreach (int value in numbers2)
+        {
+            Console.Write("{0} ",value);
+        }
+            Console.WriteLine();
+    }
 }
-    Console.WriteLine();
