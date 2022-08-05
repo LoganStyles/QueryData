@@ -21,11 +21,12 @@
         };
 
         //non-equijoin query between albums and publishers
-        var existingPublisherIds = albums.Select(alb => alb.PublisherId);
+        var existingPublisherIds = from alb in albums select alb.PublisherId;
 
-        var noAlbumPublisherQuery = publishers
-                                    .Where(pub => !existingPublisherIds.Contains(pub.Id))
-                                    .Select(p => new { PublisherName = p.LastName + " " + p.FirstName });
+        var noAlbumPublisherQuery = from pub in publishers
+                                        where !existingPublisherIds.Contains(pub.Id)
+                                        select new { PublisherName = pub.LastName + " " + pub.FirstName };
+        
 
         Console.WriteLine("PUBLISHERS WITHOUT ALBUMS");
         //execute the query
