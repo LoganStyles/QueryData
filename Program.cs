@@ -20,7 +20,7 @@
                                     new Album {Id=4, PublisherId=2, Title="Sunny roses"}
                                 };
 
-        //cross join query between publishers and albums
+        //non-equijoin query between albums and publishers
         var albumPublisherQuery = from alb in albums
                                     let pubids = 
                                         from pub in publishers
