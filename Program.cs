@@ -22,8 +22,9 @@
 
         //cross join query between publishers and albums
         var albumPublisherQuery = from alb in albums
-                                    let pubids = from pub in publishers
-                                    select pub.Id
+                                    let pubids = 
+                                        from pub in publishers
+                                        select pub.Id
                                     where pubids.Contains(alb.PublisherId) ==true                                
                                     select new 
                                         {
