@@ -21,19 +21,22 @@
                                 };
 
         //cross join query between publishers and albums
-        var albumPublisherQuery = publishers
-                                            .SelectMany(pub=>albums,(pub,alb)=>new
-                                            {
-                                            PublisherName = pub.FirstName+" "+pub.LastName, 
-                                            AlbumTitle  =alb.Title
-                                            });
+        var albumPublisherQuery = from alb in albums
+                                    let pubids = from pub in publishers
+                                    select pub.Id
+                                    where pubids.Contains(alb.PublisherId)                                    
+                                    select new 
+                                        {
+                                            AlbumName = alb.Title,
+                                            AlbumId=alb.PublisherId
+                                        };
         
 
-        Console.WriteLine("\tPUBLISHER \t\tALBUM");
+        Console.WriteLine("\tALBUM TITLE \t\tALBUM ID");
         //execute the query
         foreach (var item in albumPublisherQuery)
         {
-            Console.WriteLine("\t{0} -\t{1}", item.PublisherName, item.AlbumTitle);
+            Console.WriteLine("\t{0} \t-\t{1}", item.AlbumName, item.AlbumId);
         }
 
     }
