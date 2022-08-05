@@ -24,7 +24,7 @@
         var albumPublisherQuery = from alb in albums
                                     let pubids = from pub in publishers
                                     select pub.Id
-                                    where pubids.Contains(alb.PublisherId)                                    
+                                    where pubids.Contains(alb.PublisherId) ==true                                
                                     select new 
                                         {
                                             AlbumName = alb.Title,
