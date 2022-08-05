@@ -3,55 +3,35 @@
     private static void Main(string[] args)
     {
         //data source
-        List<Publisher> publishers =  new List<Publisher> 
-                                        {
-                                        new Publisher {Id=1, FirstName="Felix", LastName="Donald"},
-                                        new Publisher {Id=2, FirstName="Sandra", LastName="Yemi"},
-                                        new Publisher {Id=3, FirstName="Femi", LastName="Fraser"},
-                                        new Publisher {Id=4, FirstName="Jones", LastName="Blaze"}
-                                        };
+        List<Publisher> publishers = new List<Publisher>
+        {
+            new Publisher {Id = 1, FirstName = "Felix",LastName = "Donald"},
+            new Publisher {Id = 2, FirstName = "Sandra",LastName = "Yemi"},
+            new Publisher {Id = 3, FirstName = "Femi",LastName = "Fraser"},
+            new Publisher {Id = 4, FirstName = "Jones",LastName = "Blaze"}
+        };
 
         //data source
         List<Album> albums = new List<Album>
-                                {
-                                    new Album {Id=1, PublisherId=2, Title="Gold Rush"},
-                                    new Album {Id=2, PublisherId=3, Title="My love"},
-                                    new Album {Id=3, PublisherId=3, Title="1000 miles"},
-                                    new Album {Id=4, PublisherId=2, Title="Sunny roses"}
-                                };
+        {
+            new Album {Id = 1, PublisherId = 2, Title = "Gold Rush"},
+            new Album {Id = 2, PublisherId = 3, Title = "My love"},
+            new Album {Id = 3, PublisherId = 3, Title = "1000 miles"},
+            new Album {Id = 4, PublisherId = 2, Title = "Sunny roses"}
+        };
 
         //non-equijoin query between albums and publishers
-        var albumPublisherQuery = from alb in albums
-                                    let pubids = 
-                                        from pub in publishers
-                                        select pub.Id
-                                    where pubids.Contains(alb.PublisherId) ==true                                
-                                    select new 
-                                        {
-                                            AlbumName = alb.Title,
-                                            AlbumId=alb.PublisherId
-                                        };
-        
+        var existingPublisherIds = albums.Select(alb => alb.PublisherId);
 
-        Console.WriteLine("\tALBUM TITLE \t\tALBUM ID");
+        var noAlbumPublisherQuery = publishers
+                                    .Where(pub => !existingPublisherIds.Contains(pub.Id))
+                                    .Select(p => new { PublisherName = p.LastName + " " + p.FirstName });
+
+        Console.WriteLine("PUBLISHERS WITHOUT ALBUMS");
         //execute the query
-        foreach (var item in albumPublisherQuery)
+        foreach (var item in noAlbumPublisherQuery)
         {
-            Console.WriteLine("\t{0} \t-\t{1}", item.AlbumName, item.AlbumId);
+            Console.WriteLine("{0} ", item.PublisherName);
         }
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
