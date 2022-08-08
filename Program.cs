@@ -1,37 +1,38 @@
-﻿class Program
+﻿using System.Globalization;
+
+class Program
 {
     private static void Main(string[] args)
     {
         //data source
-        List<Publisher> publishers = new List<Publisher>
-        {
-            new Publisher {Id = 1, FirstName = "Felix",LastName = "Donald"},
-            new Publisher {Id = 2, FirstName = "Sandra",LastName = "Yemi"},
-            new Publisher {Id = 3, FirstName = "Femi",LastName = "Fraser"},
-            new Publisher {Id = 4, FirstName = "Jones",LastName = "Blaze"}
-        };
-
-        //data source
         List<Album> albums = new List<Album>
         {
-            new Album {Id = 1, PublisherId = 2, Title = "Gold Rush"},
-            new Album {Id = 2, PublisherId = 3, Title = "My love"},
-            new Album {Id = 3, PublisherId = 3, Title = "1000 miles"},
-            new Album {Id = 4, PublisherId = 2, Title = "Sunny roses"}
+            new Album {Id = 1,  Title = "Gold Rush", Price=3200, ReleaseDate=new DateOnly(2020, 04, 20)},
+            new Album {Id = 2,  Title = "My love", Price=4800, ReleaseDate=new DateOnly(1998, 07, 20)},
+            new Album {Id = 3,  Title = "1000 miles", Price=5000, ReleaseDate=new DateOnly(2020, 09, 30)},
+            new Album {Id = 4,  Title = "Sunny roses", Price=6500, ReleaseDate=new DateOnly(2022, 01, 10)},
+            new Album {Id = 5,  Title = "Riot act", Price=1000, ReleaseDate=new DateOnly(2020, 02, 07)},
+            new Album {Id = 6,  Title = "True confessions", Price=2000, ReleaseDate=new DateOnly(2015, 12, 15)},
+            new Album {Id = 7,  Title = "Earth and firestorms", Price=3500, ReleaseDate=new DateOnly(2001, 11, 11)},
+            new Album {Id = 8,  Title = "Rekindle my heart", Price=4400, ReleaseDate=new DateOnly(2022, 12, 03)},
+            new Album {Id = 9,  Title = "The invincible hand", Price=9000, ReleaseDate=new DateOnly(2005, 05, 20)},
+            new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //non-equijoin query between albums and publishers
-        var existingPublisherIds = albums.Select(alb => alb.PublisherId);
+        //query for partitioning albums
+        var albumsQuery = albums
+                                .Skip(5)
+                                .Take(3);
 
-        var noAlbumPublisherQuery = publishers
-                                    .Where(pub => !existingPublisherIds.Contains(pub.Id))
-                                    .Select(p => new { PublisherName = p.LastName + " " + p.FirstName });
-
-        Console.WriteLine("PUBLISHERS WITHOUT ALBUMS");
+        Console.WriteLine("ALBUM TITLE \t\tRELEASE DATE");
         //execute the query
-        foreach (var item in noAlbumPublisherQuery)
+        foreach (var item in albumsQuery)
         {
-            Console.WriteLine("{0} ", item.PublisherName);
+            Console.WriteLine(
+                "{0} \t{1}", 
+                item.Title, 
+                item.ReleaseDate.ToString("dd MMM, yyyy",CultureInfo.InvariantCulture)
+            );
         }
     }
 }
