@@ -29,7 +29,7 @@
                                             });
         
 
-        Console.WriteLine("\tPUBLISHER \t\tALBUM");
+        Console.WriteLine("\tPUBLISHER \tALBUM");
         //execute the query
         foreach (var item in albumPublisherQuery)
         {
