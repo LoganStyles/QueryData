@@ -20,19 +20,14 @@ class Program
         };
 
         //query for partitioning albums
-        var albumsQuery = albums
-                                .Skip(5)
-                                .Take(3);
+        var firstAlbum = albums.First();
 
-        Console.WriteLine("ALBUM TITLE \t\tRELEASE DATE");
+        Console.WriteLine("FIRST ALBUM TITLE \tRELEASE DATE");
         //execute the query
-        foreach (var item in albumsQuery)
-        {
-            Console.WriteLine(
-                "{0} \t{1}", 
-                item.Title, 
-                item.ReleaseDate.ToString("dd MMM, yyyy",CultureInfo.InvariantCulture)
+        Console.WriteLine(
+                "{0} \t\t{1}", 
+                firstAlbum.Title, 
+                firstAlbum.ReleaseDate.ToString("dd MMM, yyyy",CultureInfo.InvariantCulture)
             );
-        }
     }
 }
