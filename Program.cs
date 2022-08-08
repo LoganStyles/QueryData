@@ -19,8 +19,11 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for partitioning albums
-        var firstAlbum = albums.First();
+        //query for fetching a single album
+        // var firstAlbum = albums.First();
+        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).First();
+        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault();
+        var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault(a => a.Price > 5000);
 
         Console.WriteLine("FIRST ALBUM TITLE \tRELEASE DATE");
         //execute the query
