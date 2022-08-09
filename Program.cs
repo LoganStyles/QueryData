@@ -21,11 +21,11 @@ class Program
 
         //query for checking top grossing albums
         var selectedDate = new DateOnly(2020,1,1);
-        bool topGrossingAlbums = albums.Any(a => a.ReleaseDate < selectedDate && a.Price >=5000);
+        bool selectedAlbums = albums.All(a => a.ReleaseDate < selectedDate);
 
         //execute the query
-        Console.WriteLine("There {0} top grossing albums before {1} ", 
-                            topGrossingAlbums ? "were": "were no",
+        Console.WriteLine(" {0} albums were released before {1} ", 
+                            selectedAlbums ? "All": "No",
                             selectedDate.ToString("yyyy",CultureInfo.InvariantCulture));
         
     }
