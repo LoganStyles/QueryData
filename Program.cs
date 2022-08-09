@@ -19,8 +19,8 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //sum the prices for all albums released in a specified year
         var selectedDate = new DateOnly(2020,1,1);
+        //sum the prices for all albums released before a specified year
         var sumSelectedAlbums = albums
                                 .Where(a => a.ReleaseDate < selectedDate)
                                 .Sum(a => a.Price);
@@ -29,6 +29,16 @@ class Program
         Console.WriteLine(" The total prices for all albums released before {0} is {1} ", 
                             selectedDate.ToString("yyyy",CultureInfo.InvariantCulture),
                             sumSelectedAlbums);
+
+        //average of the prices for all albums released before a specified year
+        var averageSelectedAlbums = albums
+                                .Where(a => a.ReleaseDate < selectedDate)
+                                .Average(a => a.Price);
+
+        //output the result
+        Console.WriteLine(" The average price for all albums released before {0} is {1} ", 
+                            selectedDate.ToString("yyyy",CultureInfo.InvariantCulture),
+                            averageSelectedAlbums);
         
     }
 }
