@@ -19,7 +19,7 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for checking top grossing albums
+        //query for all albums released in a specified year
         var selectedDate = new DateOnly(2020,1,1);
         bool selectedAlbums = albums.All(a => a.ReleaseDate < selectedDate);
 
