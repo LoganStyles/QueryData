@@ -32,8 +32,8 @@ class Program
 
         //average of the prices for all albums released before a specified year
         var averageSelectedAlbums = albums
-                                .Where(a => a.ReleaseDate < selectedDate)
-                                .Average(a => a.Price);
+                                    .Where(a => a.ReleaseDate < selectedDate)
+                                    .Average(a => a.Price);
 
         //output the result
         Console.WriteLine(" The average price for all albums released before {0} is {1} ", 
