@@ -19,13 +19,22 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for all albums released in a specified year
         var selectedDate = new DateOnly(2020,1,1);
+        
+        //query for checking top grossing albums released in a specified year
+        bool topGrossingAlbums = albums.Any(a => a.ReleaseDate < selectedDate && a.Price >=5000);
+
+        //execute the query
+        Console.WriteLine("There {0} top grossing albums before {1} ", 
+                            topGrossingAlbums ? "were": "were no",
+                            selectedDate.ToString("yyyy",CultureInfo.InvariantCulture));
+
+        //query for all albums released in a specified year
         bool selectedAlbums = albums.All(a => a.ReleaseDate < selectedDate);
 
         //execute the query
         Console.WriteLine(" {0} albums were released before {1} ", 
-                            selectedAlbums ? "All": "No",
+                            selectedAlbums ? "All": "Not all",
                             selectedDate.ToString("yyyy",CultureInfo.InvariantCulture));
         
     }
