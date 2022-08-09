@@ -19,18 +19,14 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for fetching a single album
-        // var firstAlbum = albums.First();
-        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).First();
-        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault();
-        var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault(a => a.Price > 5000);
+        //query for checking top grossing albums
+        var selectedDate = new DateOnly(2020,1,1);
+        bool topGrossingAlbums = albums.Any(a => a.ReleaseDate < selectedDate && a.Price >=5000);
 
-        Console.WriteLine("FIRST ALBUM TITLE \tRELEASE DATE");
         //execute the query
-        Console.WriteLine(
-                "{0} \t\t{1}", 
-                firstAlbum.Title, 
-                firstAlbum.ReleaseDate.ToString("dd MMM, yyyy",CultureInfo.InvariantCulture)
-            );
+        Console.WriteLine("There {0} top grossing albums before {1} ", 
+                            topGrossingAlbums ? "were": "were no",
+                            selectedDate.ToString("yyyy",CultureInfo.InvariantCulture));
+        
     }
 }
