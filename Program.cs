@@ -19,14 +19,16 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for all albums released in a specified year
+        //sum the prices for all albums released in a specified year
         var selectedDate = new DateOnly(2020,1,1);
-        bool selectedAlbums = albums.All(a => a.ReleaseDate < selectedDate);
+        var sumSelectedAlbums = albums
+                                .Where(a => a.ReleaseDate < selectedDate)
+                                .Sum(a => a.Price);
 
-        //execute the query
-        Console.WriteLine(" {0} albums were released before {1} ", 
-                            selectedAlbums ? "All": "No",
-                            selectedDate.ToString("yyyy",CultureInfo.InvariantCulture));
+        //output the result
+        Console.WriteLine(" The total prices for all albums released before {0} is {1} ", 
+                            selectedDate.ToString("yyyy",CultureInfo.InvariantCulture),
+                            sumSelectedAlbums);
         
     }
 }
