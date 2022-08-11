@@ -26,11 +26,11 @@ class Program
             foreach (var album in emp.Albums)
             {
                 System.Console.WriteLine(album.Title);
-                System.Console.WriteLine("\tThis album has the following tags");
+                System.Console.WriteLine("This album has the following tag(s)");
 
                 foreach (var tags in album.Tags)
                 {
-                    System.Console.WriteLine("\t\t{0}",tags.Title);
+                    System.Console.Write("{0} ",tags.Title);
                 }
             }
             System.Console.WriteLine();
