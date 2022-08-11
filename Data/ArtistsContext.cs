@@ -17,6 +17,8 @@ namespace QueryData
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Studio> Studios { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Blog> Blogs { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
