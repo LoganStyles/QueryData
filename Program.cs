@@ -7,41 +7,8 @@ class Program
     {
         var context = new ArtistsContext();
 
-        #region  eager loading
-        // var selectedEmployees = context.Employees
-        //     .Include(emp => emp.Studio) //including a reference navigation property
-        //     .ToList();
-
-        // foreach (var emp in selectedEmployees)
-        // {
-        //     Console.WriteLine("{0} works at the {1} office.", emp.LastName, emp.Studio.City);
-        //     System.Console.WriteLine();
-        // }
-        #endregion
-
-        #region  eager loading - multiple includes
-        // var selectedEmployees = context.Employees
-        //     .Include(emp => emp.Studio) //including a reference navigation property
-        //     .Include(emp => emp.Albums) //including a collection property
-        //     .ToList();
-
-        // foreach (var emp in selectedEmployees)
-        // {
-        //     Console.WriteLine(
-        //         "{0} works at the {1} office and has the following album(s).",
-        //         emp.LastName,
-        //         emp.Studio.City
-        //     );
-
-        //     foreach (var album in emp.Albums)
-        //     {
-        //         System.Console.WriteLine(album.Title);
-        //     }
-        //         System.Console.WriteLine();
-        // }
-        #endregion
-
-        #region  eager loading - multiple includes & drilling down multiple levels
+        
+        //drilling down multiple levels
         var selectedEmployees = context.Employees
             .Include(emp => emp.Studio) //including a reference navigation property
             .Include(emp => emp.Albums) //including a collection property
@@ -70,6 +37,5 @@ class Program
             }
         System.Console.WriteLine();
         }
-        #endregion
     }
 }
