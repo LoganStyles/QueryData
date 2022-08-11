@@ -9,3 +9,13 @@ INSERT INTO Studios values(3,44,'Lekki',2);
 INSERT INTO Albums values(1,'Blue Fire',2000,2);
 INSERT INTO Albums values(2,'Raging Heart',3850,3);
 INSERT INTO Albums values(3,'Fixated on you',4000,1);
+
+INSERT INTO Tags values(1, 'Rock');
+INSERT INTO Tags values(2, 'RnB');
+INSERT INTO Tags values(3, 'Jazz');
+INSERT INTO Tags values(4, 'Country');
+INSERT INTO Tags values(5, 'Classical');
+
+INSERT INTO AlbumTags values(1,2);
+INSERT INTO AlbumTags values(2,3);
+INSERT INTO AlbumTags values(3,4);
