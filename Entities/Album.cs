@@ -18,10 +18,10 @@ namespace QueryData
 
         [ForeignKey(nameof(EmployeeId))]
         [InverseProperty("Albums")]
-        public virtual Employee Employee { get; set; }
+        public Employee Employee { get; set; }
 
         [ForeignKey("AlbumId")]
         [InverseProperty(nameof(Tag.Albums))]
-        public virtual ICollection<Tag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
     }
 }

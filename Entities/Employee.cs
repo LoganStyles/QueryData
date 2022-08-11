@@ -17,9 +17,9 @@ namespace QueryData
         public long Age { get; set; }
 
         [InverseProperty("Employee")]
-        public virtual Studio Studio { get; set; }
+        public Studio Studio { get; set; }
         
         [InverseProperty(nameof(Album.Employee))]
-        public virtual ICollection<Album> Albums { get; set; }
+        public ICollection<Album> Albums { get; set; }
     }
 }
