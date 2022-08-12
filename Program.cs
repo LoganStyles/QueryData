@@ -7,26 +7,19 @@ class Program
     {
         var context = new ArtistsContext();
 
-        //drilling down multiple levels
-        var selectedEmployees = context.Employees
-            .Include(emp => emp.Albums) //including a collection property
-            .ThenInclude(alb => alb.Tags) //drilling down to include the Tags property of Albums
-            .ToList();
+        
+        var selectedEmployee = context.Employees.First();//fetch the first employee from the employees table
+        Console.WriteLine("{0} has the following album(s).", selectedEmployee.LastName);
 
-        foreach (var emp in selectedEmployees)
+        context.Entry(selectedEmployee).Collection(emp => emp.Albums).Load();//load the Album property for the selected employee
+
+        foreach (var album in selectedEmployee.Albums)
         {
-            Console.WriteLine("{0} has the following album(s).", emp.LastName);
-
-            foreach (var album in emp.Albums)
-            {
-                Console.WriteLine("{0} - This album has the following tag(s)", album.Title);
-
-                foreach (var tags in album.Tags)
-                {
-                    Console.WriteLine("{0} ", tags.Title);
-                }
-            }
-            Console.WriteLine();
+            Console.WriteLine("{0} ", album.Title);
         }
+        Console.WriteLine();
+
+        context.Entry(selectedEmployee).Reference(emp => emp.Studio).Load(); //load the Studio property for the selected employee
+        System.Console.WriteLine("{0} works in {1} city",selectedEmployee.LastName, selectedEmployee.Studio.City);
     }
 }
