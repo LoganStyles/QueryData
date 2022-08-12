@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QueryData;
+﻿using QueryData;
 
 class Program
 {
