@@ -4,29 +4,23 @@ namespace QueryData
 {
     public partial class ArtistsContext : DbContext
     {
-        public ArtistsContext()
-        {
-        }
+        public ArtistsContext() { }
 
-        public ArtistsContext(DbContextOptions<ArtistsContext> options)
-            : base(options)
-        {
-        }
+        public ArtistsContext(DbContextOptions<ArtistsContext> options) : base(options) { }
 
         public virtual DbSet<Album> Albums { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Studio> Studios { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("data source=output/Artists.db")
-                .LogTo(Console.WriteLine, new[]{DbLoggerCategory.Database.Command.Name}, Microsoft.Extensions.Logging.LogLevel.Information)
-                .EnableSensitiveDataLogging();
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlite("data source=output/Artists.db");
             }
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -72,6 +66,5 @@ namespace QueryData
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
     }
 }
