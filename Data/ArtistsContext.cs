@@ -19,7 +19,13 @@ namespace QueryData
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlite("data source=output/Artists.db");
+                    .UseSqlite("data source=output/Artists.db")
+                    .LogTo(
+                        Console.WriteLine,
+                        new[] { DbLoggerCategory.Database.Command.Name },
+                        Microsoft.Extensions.Logging.LogLevel.Information
+                    )
+                    .EnableSensitiveDataLogging();
             }
         }
 
