@@ -9,7 +9,7 @@ class Program
 
         //drilling down multiple levels
         var selectedEmployees = context.Employees
-            .Include(emp => emp.Albums) //including a collection property
+            .Include(emp => emp.Albums) //including the Albums collection property
             .ThenInclude(alb => alb.Tags) //drilling down to include the Tags property of Albums
             .ToList();
 
