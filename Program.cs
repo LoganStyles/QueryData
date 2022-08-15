@@ -8,7 +8,8 @@ class Program
 
         //fetching all artists
         var artists = context.Employees.ToList();
-        
+
+        Console.WriteLine();
         foreach (var artist in artists)
         {
             Console.WriteLine("{0} has the following album(s).", artist.LastName);
@@ -19,6 +20,5 @@ class Program
             }
             Console.WriteLine();
         }
-
     }
 }
