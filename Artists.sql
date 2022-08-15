@@ -56,3 +56,23 @@ INSERT INTO AlbumTags values(1,2);
 INSERT INTO AlbumTags values(2,3);
 INSERT INTO AlbumTags values(3,4);
 INSERT INTO AlbumTags values(4,1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
