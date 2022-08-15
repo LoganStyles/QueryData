@@ -9,7 +9,7 @@ class Program
 
         //  eager loading
         var selectedEmployees = context.Employees
-            .Include(emp => emp.Studio) //including a reference navigation property
+            .Include(emp => emp.Studio) //including a Studio reference navigation property
             .ToList();
 
         foreach (var emp in selectedEmployees)
