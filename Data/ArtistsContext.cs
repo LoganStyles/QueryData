@@ -8,10 +8,10 @@ namespace QueryData
 
         public ArtistsContext(DbContextOptions<ArtistsContext> options) : base(options) { }
 
-        public virtual DbSet<Album> Albums { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Studio> Studios { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Studio> Studios { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

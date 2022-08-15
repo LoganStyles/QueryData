@@ -16,6 +16,6 @@ namespace QueryData
 
         [ForeignKey("TagId")]
         [InverseProperty(nameof(Album.Tags))]
-        public virtual ICollection<Album> Albums { get; set; }
+        public ICollection<Album> Albums { get; set; }
     }
 }
