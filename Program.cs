@@ -13,6 +13,7 @@ class Program
             .ThenInclude(alb => alb.Tags) //including the Tags property of Albums
             .ToList();
 
+        Console.WriteLine();
         foreach (var emp in selectedEmployees)
         {
             Console.WriteLine("{0} has the following album(s).", emp.LastName);
