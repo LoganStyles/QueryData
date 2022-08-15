@@ -12,11 +12,10 @@ class Program
             .Include(emp => emp.Studio) //including a Studio reference navigation property
             .ToList();
 
+        Console.WriteLine();
         foreach (var emp in selectedEmployees)
         {
             Console.WriteLine("{0} works at the {1} office.", emp.LastName, emp.Studio.City);
-            System.Console.WriteLine();
         }
-        
     }
 }
