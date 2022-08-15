@@ -15,6 +15,6 @@ namespace QueryData
 
         [ForeignKey(nameof(EmployeeId))]
         [InverseProperty("Studio")]
-        public virtual Employee Employee { get; set; }
+        public Employee Employee { get; set; }
     }
 }
