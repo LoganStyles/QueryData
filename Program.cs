@@ -7,33 +7,16 @@ class Program
     {
         var context = new ArtistsContext();
 
-        //eager loading - multiple includes
-        var selectedEmployees = context.Employees
-            .Include(emp => emp.Studio) //including a reference navigation property
-            .Include(emp => emp.Albums) //including a collection property
-            .ThenInclude(alb => alb.Tags) //drilling down multiple levels
-            .ToList();
+        // var blogs = context.Blogs.Include(blog => blog.Posts).AsSplitQuery().ToList();
+        var blogs = context.Blogs.Include(blog => blog.Posts).ToList();
 
-        System.Console.WriteLine();
-        foreach (var emp in selectedEmployees)
+        foreach (var item in blogs)
         {
-            Console.WriteLine(
-                "{0} works at the {1} office and has the following album(s).",
-                emp.LastName,
-                emp.Studio.City
-            );
+            Console.WriteLine(item.BlogId);
 
-            foreach (var album in emp.Albums)
-            {
-                System.Console.WriteLine(album.Title);
-                System.Console.WriteLine("This album has the following tag(s)");
-
-                foreach (var tags in album.Tags)
-                {
-                    System.Console.Write("{0} ",tags.Title);
-                }
+            foreach(var post in item.Posts){
+                Console.WriteLine(post.Title);
             }
-            System.Console.WriteLine();
         }
     }
 }
