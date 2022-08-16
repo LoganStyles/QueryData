@@ -7,11 +7,11 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var blogs = context.Blogs.FromSqlRaw("select * from Blogs").ToList();
+        var employees = context.Employees.FromSqlRaw("select * from Employees").ToList();
 
-        foreach (var item in blogs)
+        foreach (var item in employees)
         {
-            Console.WriteLine(item.BlogId);
+            Console.WriteLine(item.FirstName);
         }
     }
 }
