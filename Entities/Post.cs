@@ -8,6 +8,7 @@ namespace QueryData
 
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
+        public bool IsDeleted { get; set; }
         public int AuthorId { get; set; }
         public Person Author { get; set; }
     }
