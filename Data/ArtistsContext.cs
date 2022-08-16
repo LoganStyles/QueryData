@@ -68,6 +68,8 @@ namespace QueryData
                 }
             );
 
+            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDeleted);
+
             OnModelCreatingPartial(modelBuilder);
         }
 

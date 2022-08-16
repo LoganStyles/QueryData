@@ -24,9 +24,9 @@ INSERT INTO Blogs values(1, 'url1');
 INSERT INTO Blogs values(2, 'url2');
 INSERT INTO Blogs values(3, 'url3');
 
-INSERT INTO Posts values (1, 'post1','content1',2, 1);
-INSERT INTO Posts values (2, 'post2','content2',1, 3);
-INSERT INTO Posts values (3, 'post3','content3',2, 1);
+INSERT INTO Posts values (1, 'post1','content1',2,1,0);
+INSERT INTO Posts values (2, 'post2','content2',1,3,1);
+INSERT INTO Posts values (3, 'post3','content3',2,1, 1);
 
 INSERT INTO Person values (1,'person1',1);
 INSERT INTO Person values (2,'person2',2);
