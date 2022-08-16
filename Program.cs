@@ -1,4 +1,5 @@
-﻿using QueryData;
+﻿using Microsoft.EntityFrameworkCore;
+using QueryData;
 
 class Program
 {
@@ -12,5 +13,14 @@ class Program
         {
             Console.WriteLine($"Post id : {item.PostId}, Post Title: {item.Title}");
         }
+
+        //disable query filters
+        var postsWithDisabledFilters = context.Posts.IgnoreQueryFilters().ToList();
+
+        foreach (var item in postsWithDisabledFilters)
+        {
+            Console.WriteLine($"Post id : {item.PostId}, Post Title: {item.Title}");
+        }
+
     }
 }
