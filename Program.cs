@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QueryData;
+﻿using QueryData;
 
 class Program
 {
@@ -7,18 +6,11 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var employeeId = 1;
+        var posts = context.Posts.ToList();
 
-        var employees = context.Employees
-            .FromSqlInterpolated($"select * from Employees where Id={employeeId}");
-
-        // var employees = context.Employees
-        //     .FromSqlRaw("select * from Employees")
-        //     .ToList();
-
-        foreach (var item in employees)
+        foreach (var item in posts)
         {
-            Console.WriteLine(item.FirstName);
+            Console.WriteLine($"Post id : {item.PostId}, Post Title: {item.Title}");
         }
     }
 }
