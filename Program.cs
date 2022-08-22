@@ -11,17 +11,3 @@ foreach (char item in letterQuery)
     Console.Write("{0} ", item);
 }
     Console.WriteLine();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
