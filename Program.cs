@@ -34,17 +34,3 @@ foreach (string item in descendingFruitsQuery)
 {
     Console.WriteLine(item);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
