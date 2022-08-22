@@ -32,16 +32,3 @@ public class Employee{
     public string LastName {get; set;}
     public int Salary {get; set;}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
