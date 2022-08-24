@@ -7,14 +7,9 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var employeeId = 1;
-
         var employees = context.Employees
-            .FromSqlInterpolated($"select * from Employees where Id={employeeId}");
-
-        // var employees = context.Employees
-        //     .FromSqlRaw("select * from Employees")
-        //     .ToList();
+            .FromSqlRaw("select * from Employees")
+            .ToList();
 
         foreach (var item in employees)
         {
