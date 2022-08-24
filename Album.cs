@@ -5,16 +5,3 @@ public class Album{
     public int Price { get; set; }
     public DateOnly ReleaseDate { get; set; }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
