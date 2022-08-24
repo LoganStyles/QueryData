@@ -7,19 +7,19 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var posts = context.Posts.ToList();
+        var albums = context.Albums.ToList();
 
-        foreach (var item in posts)
+        foreach (var album in albums)
         {
-            Console.WriteLine($"Post id : {item.PostId}, Post Title: {item.Title}");
+            Console.WriteLine($"Album id : {album.Id}, Album Title: {album.Title}");
         }
 
         //disable query filters
-        var postsWithDisabledFilters = context.Posts.IgnoreQueryFilters().ToList();
+        var albumsWithDisabledFilters = context.Albums.IgnoreQueryFilters().ToList();
 
-        foreach (var item in postsWithDisabledFilters)
+        foreach (var album in albumsWithDisabledFilters)
         {
-            Console.WriteLine($"Post id : {item.PostId}, Post Title: {item.Title}");
+            Console.WriteLine($"Album id : {album.Id}, Album Title: {album.Title}");
         }
 
     }

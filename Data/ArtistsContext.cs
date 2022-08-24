@@ -8,12 +8,8 @@ namespace QueryData
 
         public ArtistsContext(DbContextOptions<ArtistsContext> options) : base(options) { }
 
-        public virtual DbSet<Album> Albums { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Studio> Studios { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
-        public virtual DbSet<Blog> Blogs { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Album> Albums { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,48 +27,7 @@ namespace QueryData
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Album>(
-                entity =>
-                {
-                    entity
-                        .HasOne(d => d.Employee)
-                        .WithMany(p => p.Albums)
-                        .HasForeignKey(d => d.EmployeeId)
-                        .OnDelete(DeleteBehavior.ClientSetNull);
-
-                    entity
-                        .HasMany(d => d.Tags)
-                        .WithMany(p => p.Albums)
-                        .UsingEntity<Dictionary<string, object>>(
-                            "AlbumTag",
-                            l => l.HasOne<Tag>().WithMany().HasForeignKey("TagId"),
-                            r => r.HasOne<Album>().WithMany().HasForeignKey("AlbumId"),
-                            j =>
-                            {
-                                j.HasKey("AlbumId", "TagId");
-
-                                j.ToTable("AlbumTags");
-                            }
-                        );
-                }
-            );
-
-            modelBuilder.Entity<Studio>(
-                entity =>
-                {
-                    entity
-                        .HasOne(d => d.Employee)
-                        .WithOne(p => p.Studio)
-                        .HasForeignKey<Studio>(d => d.EmployeeId)
-                        .OnDelete(DeleteBehavior.ClientSetNull);
-                }
-            );
-
-            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDeleted);
-
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<Album>().HasQueryFilter(p => !p.IsDeleted);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
