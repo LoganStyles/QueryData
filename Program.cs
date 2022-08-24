@@ -21,8 +21,9 @@
                                 };
 
         //group join query between publishers and albums
-        var albumPublisherQuery = publishers
-                                            .GroupJoin(albums,p=>p.Id, a=>a.PublisherId, 
+        var albumPublisherQuery = publishers.GroupJoin(albums,
+                                            p=>p.Id, 
+                                            a=>a.PublisherId, 
                                             (pub,albs)=>new
                                                     {
                                                     PublisherName = pub.FirstName+" "+pub.LastName, 
