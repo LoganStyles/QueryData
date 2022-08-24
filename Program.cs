@@ -7,14 +7,19 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var employees = context.Employees.Include(emp => emp.Albums).AsSplitQuery().ToList();
-        // var employees = context.Employees.Include(emp => emp.Albums).ToList();
+        var employees = context.Employees
+                .Include(emp => emp.Albums)
+                .AsSplitQuery()
+                .ToList();
+
+        //var employees = context.Employees.Include(emp => emp.Albums).ToList();
 
         foreach (var staff in employees)
         {
             Console.WriteLine(staff.LastName);
 
-            foreach(var album in staff.Albums){
+            foreach (var album in staff.Albums)
+            {
                 Console.WriteLine(album.Title);
             }
         }
