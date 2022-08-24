@@ -7,15 +7,15 @@ class Program
     {
         var context = new ArtistsContext();
 
-        // var blogs = context.Blogs.Include(blog => blog.Posts).AsSplitQuery().ToList();
-        var blogs = context.Blogs.Include(blog => blog.Posts).ToList();
+        // var employees = context.Employees.Include(emp => emp.Albums)).AsSplitQuery().ToList();
+        var employees = context.Employees.Include(emp => emp.Albums).ToList();
 
-        foreach (var item in blogs)
+        foreach (var staff in employees)
         {
-            Console.WriteLine(item.BlogId);
+            Console.WriteLine(staff.LastName);
 
-            foreach(var post in item.Posts){
-                Console.WriteLine(post.Title);
+            foreach(var album in staff.Albums){
+                Console.WriteLine(album.Title);
             }
         }
     }
