@@ -4,16 +4,3 @@ public class Album{
     public long PublisherId { get; set; }
     public string Title { get; set; }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
