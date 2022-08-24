@@ -7,20 +7,13 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var albums = context.Albums.ToList();
+        var employees = context.Employees
+            .FromSqlRaw("select * from Employees")
+            .ToList();
 
-        foreach (var album in albums)
+        foreach (var item in employees)
         {
-            Console.WriteLine($"Album id : {album.Id}, Album Title: {album.Title}");
+            Console.WriteLine(item.FirstName);
         }
-
-        //disable query filters
-        var albumsWithDisabledFilters = context.Albums.IgnoreQueryFilters().ToList();
-
-        foreach (var album in albumsWithDisabledFilters)
-        {
-            Console.WriteLine($"Album id : {album.Id}, Album Title: {album.Title}");
-        }
-
     }
 }
