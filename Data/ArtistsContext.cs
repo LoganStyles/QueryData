@@ -27,7 +27,6 @@ namespace QueryData
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Album>().HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }
