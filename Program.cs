@@ -29,21 +29,27 @@ class Program
                 firstAlbum.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
             );
 
-        var firstAlbumOrderedbyDate = albums.OrderBy(a => a.ReleaseDate).First();
+        var firstAlbumOrderedbyDate = albums
+                                        .OrderBy(a => a.ReleaseDate)
+                                        .First();
         Console.WriteLine(
                 "{0} \t\t\t{1}",
                 firstAlbumOrderedbyDate.Title,
                 firstAlbumOrderedbyDate.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
             );
 
-        var firstOrDefaultAlbumOrderedbyDate = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault();
+        var firstOrDefaultAlbumOrderedbyDate = albums
+                                                .OrderBy(a => a.ReleaseDate)
+                                                .FirstOrDefault();
         Console.WriteLine(
                 "{0} \t\t\t{1}",
                 firstOrDefaultAlbumOrderedbyDate.Title,
                 firstOrDefaultAlbumOrderedbyDate.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
             );
 
-        var firstOrDefaultAlbumOrderedbyDateHavingHighPrice = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault(a => a.Price > 5000);
+        var firstOrDefaultAlbumOrderedbyDateHavingHighPrice = albums
+                                                                .OrderBy(a => a.ReleaseDate)
+                                                                .FirstOrDefault(a => a.Price > 5000);
         Console.WriteLine(
                 "{0} \t\t{1}",
                 firstOrDefaultAlbumOrderedbyDateHavingHighPrice.Title,
