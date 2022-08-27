@@ -19,18 +19,35 @@ class Program
             new Album {Id = 10,  Title = "Born without you", Price=3000, ReleaseDate=new DateOnly(2006, 11, 20)}
         };
 
-        //query for fetching a single album
-        // var firstAlbum = albums.First();
-        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).First();
-        // var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault();
-        var firstAlbum = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault(a => a.Price > 5000);
 
-        Console.WriteLine("FIRST ALBUM TITLE \tRELEASE DATE");
-        //execute the query
+        Console.WriteLine("FIRST ALBUM TITLE \t\tRELEASE DATE");
+
+        var firstAlbum = albums.First();
         Console.WriteLine(
-                "{0} \t\t{1}", 
-                firstAlbum.Title, 
-                firstAlbum.ReleaseDate.ToString("dd MMM, yyyy",CultureInfo.InvariantCulture)
+                "{0} \t\t\t{1}",
+                firstAlbum.Title,
+                firstAlbum.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
+            );
+
+        var firstAlbumOrderedbyDate = albums.OrderBy(a => a.ReleaseDate).First();
+        Console.WriteLine(
+                "{0} \t\t\t{1}",
+                firstAlbumOrderedbyDate.Title,
+                firstAlbumOrderedbyDate.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
+            );
+
+        var firstOrDefaultAlbumOrderedbyDate = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault();
+        Console.WriteLine(
+                "{0} \t\t\t{1}",
+                firstOrDefaultAlbumOrderedbyDate.Title,
+                firstOrDefaultAlbumOrderedbyDate.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
+            );
+
+        var firstOrDefaultAlbumOrderedbyDateHavingHighPrice = albums.OrderBy(a => a.ReleaseDate).FirstOrDefault(a => a.Price > 5000);
+        Console.WriteLine(
+                "{0} \t\t{1}",
+                firstOrDefaultAlbumOrderedbyDateHavingHighPrice.Title,
+                firstOrDefaultAlbumOrderedbyDateHavingHighPrice.ReleaseDate.ToString("dd MMM, yyyy", CultureInfo.InvariantCulture)
             );
     }
 }
