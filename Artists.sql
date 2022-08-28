@@ -1,6 +1,4 @@
-#!/bin/sh
-sqlite3 output/Artists.db <<EOF
-CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+﻿CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
     "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
     "ProductVersion" TEXT NOT NULL
 );
@@ -36,4 +34,4 @@ INSERT INTO Albums values(2,'Raging Heart',3850,3);
 INSERT INTO Albums values(3,'Fixated on you',4000,1);
 
 COMMIT;
-EOF
+
