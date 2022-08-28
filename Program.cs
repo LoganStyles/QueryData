@@ -7,9 +7,10 @@ class Program
     {
         var context = new ArtistsContext();
 
-        var albums = context.Albums.ToList();
+        //disable query filters
+        var albumsWithDisabledFilters = context.Albums.IgnoreQueryFilters().ToList();
 
-        foreach (var album in albums)
+        foreach (var album in albumsWithDisabledFilters)
         {
             Console.WriteLine($"Album id : {album.Id}, Album Title: {album.Title}");
         }
