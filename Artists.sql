@@ -31,3 +31,5 @@ INSERT INTO Employees values(3,'Martha','Bertha',19);
 INSERT INTO Albums values(1,'Blue Fire',2000,0,2);
 INSERT INTO Albums values(2,'Raging Heart',3850,1,3);
 INSERT INTO Albums values(3,'Fixated on you',4000,1,1);
+
+
