@@ -919,3 +919,5 @@ $RECYCLE.BIN/
 
 # project files
 /output
+/queries
+/Migrations
