@@ -4,26 +4,22 @@ class Program
 {
     private static void Main(string[] args)
     {
-        //data source
-        List<string> fruits = new List<string> { "apples", "berries", "bananas", "mangoes" };
-        if (fruits.Any(fr => fr.Contains("an")))
-        {
-            Console.WriteLine("Yes, we have such fruits");
-        }
-        else
-        {
-            Console.WriteLine("There are no such fruits");
-        }
+        var numbers = System.IO.File
+            .ReadAllLines(@"C:\Input.txt")
+            .Select(x => x.Split(',').Select(y => int.Parse(y)).ToArray())
+            .ToList();
 
-        if (fruits.All(fr => fr.Length >=6))
+        foreach (var item in numbers)
         {
-            Console.WriteLine("Yes, we have such fruits");
+            var output = CalculateAverage(item);
+            Console.WriteLine(output);
         }
-        else
-        {
-            Console.WriteLine("There are no such fruits");
-        }
+    }
 
-
+    public static int CalculateAverage(int[] input)
+    {
+        //write your code here
+        var average = Convert.ToInt32(input.Average(a => a));
+        return average;
     }
 }
