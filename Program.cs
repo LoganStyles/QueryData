@@ -11,13 +11,13 @@ class Program
         var context = new SchoolContext();
 
         #region instructors & departments
-        int step = 2;
-        int resultSet = 2;
+        const int STEP = 2;
+        const int RESULT_SET = 2;
         var selectedInstructors = context.Instructors
                                 .Include(instructor => instructor.Department)
                                 .OrderBy(instructor => instructor.LastName)
-                                .Skip(step)
-                                .Take(resultSet)
+                                .Skip(STEP)
+                                .Take(RESULT_SET)
                                 .Select(i => new
                                 {
                                     Lastname = i.LastName,
