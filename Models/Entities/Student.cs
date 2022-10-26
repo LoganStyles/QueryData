@@ -8,8 +8,6 @@ namespace QueryData.Models.Entities{
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        [ForeignKey("Department")]
         public long DepartmentCode { get; set; }
-        public Department Department { get; set; }
     }
 }
