@@ -15,7 +15,6 @@ namespace QueryData.Models.Data
 
         }
 
-        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Instructor> Instructors { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
@@ -23,10 +22,10 @@ namespace QueryData.Models.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            // if (!optionsBuilder.IsConfigured)
-            // {
-            //     optionsBuilder.UseSqlite("data source=output/School.db");
-            // }
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("data source=output/School.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
