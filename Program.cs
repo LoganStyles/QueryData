@@ -10,6 +10,38 @@ class Program
 
         var context = new SchoolContext();
 
+        #region instructors & departments
+        int step = 2;
+        int resultSet = 2;
+        var selectedInstructors = context.Instructors
+                                .Include(instructor => instructor.Department)
+                                .OrderBy(instructor => instructor.LastName)
+                                .Skip(step)
+                                .Take(resultSet)
+                                .Select(i => new
+                                {
+                                    Lastname = i.LastName,
+                                    Firstname = i.FirstName,
+                                    DepartmentTitle = i.Department.Title
+                                });
+
+        Console.WriteLine("---INSTRUCTORS---");
+        Console.WriteLine("LASTNAME FIRSTNAME\tDEPARTMENT-TITLE");
+        //execute the query
+        foreach (var instructor in selectedInstructors)
+        {
+
+            Console.WriteLine(
+                "{0} \t{1} \t{2}",
+            instructor.Lastname,
+            instructor.Firstname,
+            instructor.DepartmentTitle
+            );
+
+        }
+
+        #endregion
+
         #region  students and their departments
         //using query method
         // var selectedStudents = context.Students
@@ -27,45 +59,12 @@ class Program
                                    StudentName = studs.LastName + " " + studs.FirstName,
                                    DepartmentName = depts.Title
                                };
-
-        Console.WriteLine("DEPARTMENT \tSTUDENTS");
+        Console.WriteLine("---STUDENTS---");
+        Console.WriteLine("DEPARTMENTS \tSTUDENTS-FULLNAME");
         //execute the query
         foreach (var student in selectedStudents)
         {
             Console.WriteLine("{0} \t{1}", student.DepartmentName, student.StudentName);
-        }
-
-        #endregion
-
-
-        #region instructors & departments
-        int step =2;
-        int resultSet=2;
-        var selectedInstructors = context.Instructors
-                                .Include(instructor => instructor.Department)
-                                .OrderBy(instructor => instructor.LastName)
-                                .Skip(step)
-                                .Take(resultSet)
-                                .Select(i => new
-                                {
-                                    Lastname = i.LastName,
-                                    Firstname = i.FirstName,
-                                    DepartmentTitle = i.Department.Title
-                                });
-
-        Console.WriteLine("---INSTRUCTORS---");
-        Console.WriteLine("LASTNAME FIRSTNAME\tDEPARTMENT TITLE");
-        //execute the query
-        foreach (var instructor in selectedInstructors)
-        {
-
-            Console.WriteLine(
-                "{0} \t{1} \t{2}",
-            instructor.Lastname,
-            instructor.Firstname,
-            instructor.DepartmentTitle
-            );
-
         }
 
         #endregion
