@@ -1,5 +1,4 @@
-﻿
-// The Three Parts of a LINQ Query:
+﻿// The Three Parts of a LINQ Query:
 // 1. Data source.
 int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
 
