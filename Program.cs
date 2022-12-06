@@ -15,7 +15,7 @@ class Program
 
             foreach (var album in staff.Albums)
             {
-                Console.WriteLine(album.Title);
+                Console.WriteLine($"\t{album.Title}");
             }
         }
     }
