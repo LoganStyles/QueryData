@@ -8,15 +8,6 @@ class Program
         var context = new ArtistsContext();
 
         var employees = context.Employees.Include(emp => emp.Albums).ToList();
-
-        foreach (var staff in employees)
-        {
-            Console.WriteLine(staff.LastName);
-
-            foreach (var album in staff.Albums)
-            {
-                Console.WriteLine($"\t{album.Title}");
-            }
-        }
+        
     }
 }
