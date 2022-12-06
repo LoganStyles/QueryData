@@ -3,7 +3,7 @@
     private static void Main(string[] args)
     {
         //data source
-        List<Publisher> publishers =  new List<Publisher> 
+        List<Publisher> publishers = new List<Publisher>
                                         {
                                         new Publisher {Id=1, FirstName="Felix", LastName="Donald"},
                                         new Publisher {Id=2, FirstName="Sandra", LastName="Yemi"},
@@ -21,13 +21,13 @@
                                 };
 
         //cross join query between publishers and albums
-        var albumPublisherQuery = publishers
-                                            .SelectMany(pub=>albums,(pub,alb)=>new
+        var albumPublisherQuery = publishers.SelectMany(pub => albums,
+                                            (pub, alb) => new
                                             {
-                                            PublisherName = pub.FirstName+" "+pub.LastName, 
-                                            AlbumTitle  =alb.Title
+                                                PublisherName = pub.FirstName + " " + pub.LastName,
+                                                AlbumTitle = alb.Title
                                             });
-        
+
 
         Console.WriteLine("\tPUBLISHER \tALBUM");
         //execute the query
