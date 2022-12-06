@@ -3,7 +3,7 @@
     private static void Main(string[] args)
     {
         //data source
-        List<Publisher> publishers =  new List<Publisher> 
+        List<Publisher> publishers = new List<Publisher>
                                         {
                                         new Publisher {Id=1, FirstName="Felix", LastName="Donald"},
                                         new Publisher {Id=2, FirstName="Sandra", LastName="Yemi"},
@@ -21,13 +21,15 @@
                                 };
 
         //join albums and publishers based on PublisherId
-        var albumPublisherQuery = albums
-                                        .Join(publishers,a=>a.PublisherId,p=>p.Id, (alb,pub)=>new
-                                                {
-                                                AlbumTitle  =alb.Title,
-                                                PublisherName = pub.FirstName+" "+pub.LastName
-                                                });
-        
+        var albumPublisherQuery = albums.Join(publishers,
+                                            a => a.PublisherId,
+                                            p => p.Id,
+                                            (alb, pub) => new
+                                            {
+                                                AlbumTitle = alb.Title,
+                                                PublisherName = pub.FirstName + " " + pub.LastName
+                                            });
+
 
         Console.WriteLine("\tALBUM \t\tPUBLISHER");
         //execute the query
