@@ -1,5 +1,3 @@
-#!/bin/sh
-sqlite3 output/Artists.db <<EOF
 BEGIN TRANSACTION;
 
 CREATE TABLE "Employees" (
@@ -28,4 +26,3 @@ INSERT INTO Albums values(2,'Raging Heart',3850,3);
 INSERT INTO Albums values(3,'Fixated on you',4000,1);
 
 COMMIT;
-EOF
